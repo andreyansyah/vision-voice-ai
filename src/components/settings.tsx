@@ -44,177 +44,109 @@ export const Settings = ({
   onChangeKoeiromapKey,
 }: Props) => {
   return (
-    <div className="absolute z-40 w-full h-full bg-white/80 backdrop-blur ">
-      <div className="absolute m-24">
+    <div className="futuristic-settings-modal">
+      <div className="absolute top-0 left-0 m-24 z-50">
         <IconButton
           iconName="24/Close"
+          className="futuristic-menu-btn"
           isProcessing={false}
           onClick={onClickClose}
         ></IconButton>
       </div>
-      <div className="max-h-full overflow-auto">
-        <div className="text-text1 max-w-3xl mx-auto px-24 py-64 ">
-          <div className="my-24 typography-32 font-bold">設定</div>
-          <div className="my-24">
-            <div className="my-16 typography-20 font-bold">OpenAI API キー</div>
+      <div className="max-h-full overflow-auto scroll-hidden">
+        <div className="max-w-3xl mx-auto px-24 py-64">
+          <div className="my-24 text-2xl md:text-3xl font-bold tracking-tight text-white flex items-center gap-3 border-b border-rose-500/30 pb-16">
+            <span className="w-3 h-3 rounded-full bg-rose-500 animate-pulse"></span>
+            Pengaturan Aplikasi
+          </div>
+
+          {/* KoboiLLM API Key Card */}
+          <div className="futuristic-settings-card">
+            <div className="futuristic-settings-title">🔑 Kunci API KoboiLLM</div>
             <input
-              className="text-ellipsis px-16 py-8 w-col-span-2 bg-surface1 hover:bg-surface1-hover rounded-8"
+              className="futuristic-settings-input mb-12"
               type="text"
-              placeholder="sk-..."
+              placeholder="sk-LIyUDxzxPYUgj61n07NAig"
               value={openAiKey}
               onChange={onChangeAiKey}
             />
-            <div>
-              APIキーは
+            <div className="text-xs text-neutral-300 leading-relaxed mb-8">
+              Kunci API diakses melalui layanan{" "}
               <Link
-                url="https://platform.openai.com/account/api-keys"
-                label="OpenAIのサイト"
+                url="https://lite.koboillm.com"
+                label="KoboiLLM Lite API"
               />
-              で取得できます。取得したAPIキーをフォームに入力してください。
+              .
             </div>
-            <div className="my-16">
-              ChatGPT
-              APIはブラウザから直接アクセスしています。また、APIキーや会話内容はピクシブのサーバには保存されません。
+            <div className="text-xs text-neutral-400 leading-relaxed">
+              KoboiLLM API diakses secara aman. Kunci API tidak disimpan di server luar.
               <br />
-              ※利用しているモデルはChatGPT API (GPT-3.5)です。
+              ※ Model AI yang digunakan adalah <strong>gemini/gemini-3-flash-preview</strong>.
             </div>
           </div>
-          <div className="my-40">
-            <div className="my-16 typography-20 font-bold">
-              キャラクターモデル
-            </div>
-            <div className="my-8">
-              <TextButton onClick={onClickOpenVrmFile}>VRMを開く</TextButton>
-            </div>
-          </div>
-          <div className="my-40">
-            <div className="my-8">
-              <div className="my-16 typography-20 font-bold">
-                キャラクター設定（システムプロンプト）
-              </div>
-              <TextButton onClick={onClickResetSystemPrompt}>
-                キャラクター設定リセット
-              </TextButton>
-            </div>
 
+          {/* Model Karakter Card */}
+          <div className="futuristic-settings-card">
+            <div className="futuristic-settings-title">👤 Model Karakter 3D (VRM)</div>
+            <div className="text-xs text-neutral-300 mb-16">
+              Unggah file avatar 3D (.vrm) milik Anda sendiri untuk mengganti karakter default.
+            </div>
+            <button className="futuristic-action-btn" onClick={onClickOpenVrmFile}>
+              📁 Buka File VRM
+            </button>
+          </div>
+
+          {/* System Prompt Card */}
+          <div className="futuristic-settings-card">
+            <div className="flex flex-wrap items-center justify-between gap-12 mb-16">
+              <div className="futuristic-settings-title !mb-0">🤖 Instruksi Karakter (System Prompt)</div>
+              <button className="futuristic-action-btn" onClick={onClickResetSystemPrompt}>
+                ↺ Reset Instruksi
+              </button>
+            </div>
             <textarea
               value={systemPrompt}
               onChange={onChangeSystemPrompt}
-              className="px-16 py-8  bg-surface1 hover:bg-surface1-hover h-168 rounded-8 w-full"
+              className="futuristic-settings-textarea"
             ></textarea>
           </div>
-          <div className="my-40">
-            <div className="my-16 typography-20 font-bold">声の調整</div>
-            <div>
-              KoemotionのKoeiromap APIを使用しています。詳しくは
-              <Link
-                url="https://koemotion.rinna.co.jp"
-                label="https://koemotion.rinna.co.jp"
-              />
-              をご覧ください。
-            </div>
-            <div className="mt-16 font-bold">API キー</div>
-            <div className="mt-8">
-              <input
-                className="text-ellipsis px-16 py-8 w-col-span-2 bg-surface1 hover:bg-surface1-hover rounded-8"
-                type="text"
-                placeholder="..."
-                value={koeiromapKey}
-                onChange={onChangeKoeiromapKey}
-              />
-            </div>
 
-            <div className="mt-16 font-bold">プリセット</div>
-            <div className="my-8 grid grid-cols-2 gap-[8px]">
-              <TextButton
-                onClick={() =>
-                  onChangeKoeiroParam(PRESET_A.speakerX, PRESET_A.speakerY)
-                }
-              >
-                かわいい
-              </TextButton>
-              <TextButton
-                onClick={() =>
-                  onChangeKoeiroParam(PRESET_B.speakerX, PRESET_B.speakerY)
-                }
-              >
-                元気
-              </TextButton>
-              <TextButton
-                onClick={() =>
-                  onChangeKoeiroParam(PRESET_C.speakerX, PRESET_C.speakerY)
-                }
-              >
-                かっこいい
-              </TextButton>
-              <TextButton
-                onClick={() =>
-                  onChangeKoeiroParam(PRESET_D.speakerX, PRESET_D.speakerY)
-                }
-              >
-                渋い
-              </TextButton>
-            </div>
-            <div className="my-24">
-              <div className="select-none">x : {koeiroParam.speakerX}</div>
-              <input
-                type="range"
-                min={-10}
-                max={10}
-                step={0.001}
-                value={koeiroParam.speakerX}
-                className="mt-8 mb-16 input-range"
-                onChange={(e) => {
-                  onChangeKoeiroParam(
-                    Number(e.target.value),
-                    koeiroParam.speakerY
-                  );
-                }}
-              ></input>
-              <div className="select-none">y : {koeiroParam.speakerY}</div>
-              <input
-                type="range"
-                min={-10}
-                max={10}
-                step={0.001}
-                value={koeiroParam.speakerY}
-                className="mt-8 mb-16 input-range"
-                onChange={(e) => {
-                  onChangeKoeiroParam(
-                    koeiroParam.speakerX,
-                    Number(e.target.value)
-                  );
-                }}
-              ></input>
+          {/* Voice TTS Status Card */}
+          <div className="futuristic-settings-card">
+            <div className="futuristic-settings-title">🔊 Penyesuaian Suara (TTS)</div>
+            <div className="text-sm text-neutral-200">
+              Sintesis suara diproses secara real-time menggunakan KoboiLLM <strong>gemini/gemini-3.1-flash-tts-preview</strong> (Suara Laki-Laki: <em>Puck / echo</em>).
             </div>
           </div>
+
+          {/* Chat Log History Editing Card */}
           {chatLog.length > 0 && (
-            <div className="my-40">
-              <div className="my-8 grid-cols-2">
-                <div className="my-16 typography-20 font-bold">会話履歴</div>
-                <TextButton onClick={onClickResetChatLog}>
-                  会話履歴リセット
-                </TextButton>
+            <div className="futuristic-settings-card">
+              <div className="flex flex-wrap items-center justify-between gap-12 mb-16">
+                <div className="futuristic-settings-title !mb-0">💬 Riwayat Percakapan</div>
+                <button className="futuristic-action-btn" onClick={onClickResetChatLog}>
+                  🗑️ Reset Riwayat
+                </button>
               </div>
-              <div className="my-8">
+              <div className="space-y-12">
                 {chatLog.map((value, index) => {
+                  const isAssistant = value.role === "assistant";
                   return (
                     <div
                       key={index}
-                      className="my-8 grid grid-flow-col  grid-cols-[min-content_1fr] gap-x-fixed"
+                      className="flex items-center gap-12"
                     >
-                      <div className="w-[64px] py-8">
-                        {value.role === "assistant" ? "Character" : "You"}
+                      <div className={`w-24 text-xs font-mono font-bold px-8 py-4 rounded-md text-center flex-shrink-0 ${isAssistant ? "bg-rose-900/80 text-rose-200 border border-rose-500/30" : "bg-neutral-800 text-neutral-300 border border-neutral-700"}`}>
+                        {isAssistant ? "AI" : "Anda"}
                       </div>
                       <input
-                        key={index}
-                        className="bg-surface1 hover:bg-surface1-hover rounded-8 w-full px-16 py-8"
+                        className="futuristic-settings-input"
                         type="text"
                         value={value.content}
                         onChange={(event) => {
                           onChangeChatLog(index, event.target.value);
                         }}
-                      ></input>
+                      />
                     </div>
                   );
                 })}

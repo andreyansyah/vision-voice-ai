@@ -101,24 +101,27 @@ export const Menu = ({
   return (
     <>
       <div className="absolute z-10 m-24">
-        <div className="grid grid-flow-col gap-[8px]">
+        <div className="flex items-center gap-4">
           <IconButton
             iconName="24/Menu"
-            label="設定"
+            label="Pengaturan"
+            className="futuristic-menu-btn"
             isProcessing={false}
             onClick={() => setShowSettings(true)}
           ></IconButton>
           {showChatLog ? (
             <IconButton
               iconName="24/CommentOutline"
-              label="会話ログ"
+              label="Log Percakapan"
+              className="futuristic-menu-btn"
               isProcessing={false}
               onClick={() => setShowChatLog(false)}
             />
           ) : (
             <IconButton
               iconName="24/CommentFill"
-              label="会話ログ"
+              label="Log Percakapan"
+              className="futuristic-menu-btn"
               isProcessing={false}
               disabled={chatLog.length <= 0}
               onClick={() => setShowChatLog(true)}

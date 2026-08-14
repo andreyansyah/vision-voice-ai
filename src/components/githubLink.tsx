@@ -9,14 +9,14 @@ export const GitHubLink = () => {
         rel="noopener noreferrer"
         target="_blank"
       >
-        <div className="p-8 rounded-16 bg-[#1F2328] hover:bg-[#33383E] active:bg-[565A60] flex">
+        <div className="futuristic-github-btn">
           <img
             alt="https://github.com/pixiv/ChatVRM"
-            height={24}
-            width={24}
+            height={18}
+            width={18}
             src={buildUrl("/github-mark-white.svg")}
           ></img>
-          <div className="mx-4 text-white font-bold">Fork me</div>
+          <div style={{ color: "#ffffff" }}>Fork saya</div>
         </div>
       </a>
     </div>

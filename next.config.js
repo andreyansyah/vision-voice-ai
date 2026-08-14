@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   assetPrefix: process.env.BASE_PATH || "",
   basePath: process.env.BASE_PATH || "",
-  trailingSlash: true,
+  trailingSlash: false,
   publicRuntimeConfig: {
     root: process.env.BASE_PATH || "",
   },

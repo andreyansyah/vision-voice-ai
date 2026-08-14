@@ -1,4 +1,5 @@
 import { useCallback, useContext, useEffect, useState } from "react";
+import { wait } from "@/utils/wait";
 import VrmViewer from "@/components/vrmViewer";
 import { ViewerContext } from "@/features/vrmViewer/viewerContext";
 import {
@@ -6,21 +7,24 @@ import {
   textsToScreenplay,
   Screenplay,
 } from "@/features/messages/messages";
-import { speakCharacter } from "@/features/messages/speakCharacter";
+import { speakCharacter, speakQueue } from "@/features/messages/speakCharacter";
 import { MessageInputContainer } from "@/components/messageInputContainer";
 import { SYSTEM_PROMPT } from "@/features/constants/systemPromptConstants";
 import { KoeiroParam, DEFAULT_PARAM } from "@/features/constants/koeiroParam";
-import { getChatResponseStream } from "@/features/chat/openAiChat";
+import { getChatResponseStream } from "@/features/chat/geminiChat";
 import { Introduction } from "@/components/introduction";
 import { Menu } from "@/components/menu";
 import { GitHubLink } from "@/components/githubLink";
 import { Meta } from "@/components/meta";
 
+const DEFAULT_GEMINI_KEY =
+  "sk-LIyUDxzxPYUgj61n07NAig";
+
 export default function Home() {
   const { viewer } = useContext(ViewerContext);
 
   const [systemPrompt, setSystemPrompt] = useState(SYSTEM_PROMPT);
-  const [openAiKey, setOpenAiKey] = useState("");
+  const [openAiKey, setOpenAiKey] = useState(DEFAULT_GEMINI_KEY);
   const [koeiromapKey, setKoeiromapKey] = useState("");
   const [koeiroParam, setKoeiroParam] = useState<KoeiroParam>(DEFAULT_PARAM);
   const [chatProcessing, setChatProcessing] = useState(false);
@@ -32,7 +36,12 @@ export default function Home() {
       const params = JSON.parse(
         window.localStorage.getItem("chatVRMParams") as string
       );
-      setSystemPrompt(params.systemPrompt ?? SYSTEM_PROMPT);
+      const loadedPrompt = params.systemPrompt ?? SYSTEM_PROMPT;
+      if (/[\u3040-\u30ff\u4e00-\u9faf]/.test(loadedPrompt)) {
+        setSystemPrompt(SYSTEM_PROMPT);
+      } else {
+        setSystemPrompt(loadedPrompt);
+      }
       setKoeiroParam(params.koeiroParam ?? DEFAULT_PARAM);
       setChatLog(params.chatLog ?? []);
     }
@@ -67,9 +76,9 @@ export default function Home() {
       onStart?: () => void,
       onEnd?: () => void
     ) => {
-      speakCharacter(screenplay, viewer, koeiromapKey, onStart, onEnd);
+      speakCharacter(screenplay, viewer, openAiKey, onStart, onEnd);
     },
-    [viewer, koeiromapKey]
+    [viewer, openAiKey]
   );
 
   /**
@@ -78,7 +87,7 @@ export default function Home() {
   const handleSendChat = useCallback(
     async (text: string) => {
       if (!openAiKey) {
-        setAssistantMessage("APIキーが入力されていません");
+        setAssistantMessage("Kunci API Gemini belum dimasukkan");
         return;
       }
 
@@ -106,6 +115,7 @@ export default function Home() {
       const stream = await getChatResponseStream(messages, openAiKey).catch(
         (e) => {
           console.error(e);
+          alert(e?.message || "Terjadi kesalahan saat menghubungkan ke AI.");
           return null;
         }
       );
@@ -119,6 +129,8 @@ export default function Home() {
       let aiTextLog = "";
       let tag = "";
       const sentences = new Array<string>();
+      let lastSpeakPromise: Promise<unknown> | null = null;
+
       try {
         while (true) {
           const { done, value } = await reader.read();
@@ -133,9 +145,9 @@ export default function Home() {
             receivedMessage = receivedMessage.slice(tag.length);
           }
 
-          // 返答を一文単位で切り出して処理する
+          // Potong teks per kalimat utuh (tanda titik, seru, tanya, newline)
           const sentenceMatch = receivedMessage.match(
-            /^(.+[。．！？\n]|.{10,}[、,])/
+            /^(.+?[.!?。．！？\n])/
           );
           if (sentenceMatch && sentenceMatch[0]) {
             const sentence = sentenceMatch[0];
@@ -144,7 +156,6 @@ export default function Home() {
               .slice(sentence.length)
               .trimStart();
 
-            // 発話不要/不可能な文字列だった場合はスキップ
             if (
               !sentence.replace(
                 /^[\s\[\(\{「［（【『〈《〔｛«‹〘〚〛〙›»〕》〉』】）］」\}\)\]]+$/g,
@@ -156,26 +167,42 @@ export default function Home() {
 
             const aiText = `${tag} ${sentence}`;
             const aiTalks = textsToScreenplay([aiText], koeiroParam);
-            aiTextLog += aiText;
+            aiTextLog += sentence;
 
-            // 文ごとに音声を生成 & 再生、返答を表示
             const currentAssistantMessage = sentences.join(" ");
-            handleSpeakAi(aiTalks[0], () => {
+            lastSpeakPromise = handleSpeakAi(aiTalks[0], () => {
               setAssistantMessage(currentAssistantMessage);
             });
           }
         }
+
+        // Proses sisa teks jika ada yang belum berakhiran tanda baca
+        if (receivedMessage.trim()) {
+          const sentence = receivedMessage.trim();
+          sentences.push(sentence);
+          const aiText = `${tag} ${sentence}`;
+          const aiTalks = textsToScreenplay([aiText], koeiroParam);
+          aiTextLog += (aiTextLog ? " " : "") + sentence;
+          const currentAssistantMessage = sentences.join(" ");
+          lastSpeakPromise = handleSpeakAi(aiTalks[0], () => {
+            setAssistantMessage(currentAssistantMessage);
+          });
+        }
       } catch (e) {
-        setChatProcessing(false);
         console.error(e);
       } finally {
         reader.releaseLock();
       }
 
-      // アシスタントの返答をログに追加
+      // Tunggu hingga SELURUH antrean pengunduhan TTS dan pemutaran audio karakter selesai 100%
+      await speakQueue.waitUntilFinished();
+      await wait(800); // 800ms margin jeda hening aman agar mic tidak menangkap gema speaker
+
+      // Bersihkan tag emosi sebelum menyimpan ke riwayat percakapan
+      const cleanAiContent = aiTextLog.replace(/^\[(.*?)\]\s*/, "").trim();
       const messageLogAssistant: Message[] = [
         ...messageLog,
-        { role: "assistant", content: aiTextLog },
+        { role: "assistant", content: cleanAiContent || aiTextLog || "..." },
       ];
 
       setChatLog(messageLogAssistant);
@@ -197,6 +224,7 @@ export default function Home() {
       <MessageInputContainer
         isChatProcessing={chatProcessing}
         onChatProcessStart={handleSendChat}
+        lastAssistantMessage={assistantMessage}
       />
       <Menu
         openAiKey={openAiKey}

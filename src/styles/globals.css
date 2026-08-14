@@ -47,3 +47,484 @@ body {
     display: none;
   }
 }
+
+/* Futuristic Dark Stealth / Crimson Accent Chat UI Styles */
+.futuristic-bar-wrapper {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  padding: 16px 24px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.15), transparent);
+  pointer-events: none;
+  z-index: 20;
+}
+
+.futuristic-input-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 10px;
+  border-radius: 9999px;
+  background-color: rgba(18, 18, 22, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 12px rgba(255, 255, 255, 0.05);
+  pointer-events: auto;
+}
+
+.futuristic-input-field {
+  flex: 1;
+  height: 44px;
+  padding: 0 20px;
+  border-radius: 9999px !important;
+  background-color: rgba(28, 28, 34, 0.9) !important;
+  color: #f4f4f5 !important;
+  font-size: 15px;
+  font-weight: 500;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  outline: none !important;
+  transition: all 0.2s ease-in-out;
+}
+
+.futuristic-input-field::placeholder {
+  color: #94a3b8 !important;
+}
+
+.futuristic-input-field:focus {
+  border-color: rgba(244, 63, 94, 0.6) !important;
+  box-shadow: 0 0 14px rgba(244, 63, 94, 0.25) !important;
+}
+
+.futuristic-btn {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 9999px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.futuristic-btn-mic {
+  background-color: rgba(38, 38, 46, 0.9) !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  color: #f4f4f5 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.futuristic-btn-mic:hover:not(:disabled) {
+  background-color: rgba(225, 29, 72, 0.85) !important;
+  border-color: rgba(244, 63, 94, 0.6) !important;
+  box-shadow: 0 0 16px rgba(244, 63, 94, 0.4);
+}
+
+.futuristic-btn-mic:disabled {
+  background-color: rgba(28, 28, 34, 0.5) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+  opacity: 0.4;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.futuristic-btn-send {
+  background: linear-gradient(135deg, #e11d48 0%, #be123c 100%) !important;
+  border: 1px solid rgba(251, 113, 133, 0.5) !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 16px rgba(225, 29, 72, 0.35);
+}
+
+.futuristic-btn-send:hover:not(:disabled) {
+  background: linear-gradient(135deg, #f43f5e 0%, #e11d48 100%) !important;
+  box-shadow: 0 0 22px rgba(244, 63, 94, 0.6);
+}
+
+.futuristic-btn-send:disabled {
+  background: rgba(38, 38, 44, 0.6) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+  opacity: 0.35;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.futuristic-box-rounded {
+  border-radius: 16px !important;
+}
+
+/* Subtitle Box High-Contrast Styles */
+.futuristic-subtitle-box {
+  background-color: rgba(18, 18, 24, 0.94) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-radius: 16px !important;
+  border: 1px solid rgba(244, 63, 94, 0.4) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 15px rgba(244, 63, 94, 0.15) !important;
+  overflow: hidden;
+}
+
+.futuristic-subtitle-header {
+  background: linear-gradient(90deg, #e11d48 0%, #be123c 100%) !important;
+  color: #ffffff !important;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  padding: 8px 20px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.futuristic-subtitle-text {
+  color: #ffffff !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  line-height: 1.6 !important;
+  padding: 16px 20px !important;
+  margin: 0 !important;
+}
+
+/* Futuristic Top Menu & GitHub Link Styles */
+.futuristic-menu-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 8px 18px !important;
+  border-radius: 9999px !important;
+  background-color: rgba(24, 24, 30, 0.85) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  color: #ffffff !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4) !important;
+  transition: all 0.2s ease-in-out !important;
+  cursor: pointer !important;
+  margin: 0px 5px !important;
+}
+
+.futuristic-menu-btn:hover:not(:disabled) {
+  background-color: rgba(38, 38, 48, 0.95) !important;
+  border-color: rgba(244, 63, 94, 0.6) !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 14px rgba(244, 63, 94, 0.35) !important;
+}
+
+.futuristic-menu-btn:disabled {
+  opacity: 0.4 !important;
+  cursor: not-allowed !important;
+}
+
+.futuristic-menu-btn div {
+  color: #ffffff !important;
+}
+
+.futuristic-github-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 8px 18px !important;
+  border-radius: 9999px !important;
+  background-color: rgba(24, 24, 30, 0.85) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  color: #ffffff !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4) !important;
+  transition: all 0.2s ease-in-out !important;
+  cursor: pointer !important;
+}
+
+.futuristic-github-btn:hover {
+  background-color: rgba(38, 38, 48, 0.95) !important;
+  border-color: rgba(255, 255, 255, 0.35) !important;
+}
+
+.futuristic-github-btn div {
+  color: #ffffff !important;
+}
+
+/* Chat Log Bubbles High-Contrast Styles */
+.futuristic-chat-user {
+  background-color: rgba(24, 24, 30, 0.92) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border-radius: 16px !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5) !important;
+  overflow: hidden;
+}
+
+.futuristic-chat-user-header {
+  background: rgba(45, 45, 55, 0.9) !important;
+  color: #ffffff !important;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  padding: 6px 16px !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+
+.futuristic-chat-user-body {
+  color: #ffffff !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  line-height: 1.5 !important;
+  padding: 12px 16px !important;
+}
+
+.futuristic-chat-assistant {
+  background-color: rgba(20, 18, 25, 0.94) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border-radius: 16px !important;
+  border: 1px solid rgba(244, 63, 94, 0.4) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), 0 0 14px rgba(244, 63, 94, 0.15) !important;
+  overflow: hidden;
+}
+
+.futuristic-chat-assistant-header {
+  background: linear-gradient(90deg, #e11d48 0%, #be123c 100%) !important;
+  color: #ffffff !important;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  padding: 6px 16px !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+
+.futuristic-chat-assistant-body {
+  color: #ffffff !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  line-height: 1.5 !important;
+  padding: 12px 16px !important;
+}
+
+/* Futuristic Settings Modal Custom Styles */
+.futuristic-settings-modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 40;
+  background-color: rgba(10, 10, 14, 0.88) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  color: #ffffff !important;
+}
+
+.futuristic-settings-card {
+  background-color: rgba(22, 22, 28, 0.75) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 16px !important;
+  padding: 24px !important;
+  margin-bottom: 24px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
+}
+
+.futuristic-settings-title {
+  color: #ffffff !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  margin-bottom: 14px !important;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.futuristic-settings-input {
+  width: 100% !important;
+  padding: 10px 16px !important;
+  border-radius: 12px !important;
+  background-color: rgba(30, 30, 38, 0.9) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  outline: none !important;
+  transition: all 0.2s ease-in-out;
+}
+
+.futuristic-settings-input:focus {
+  border-color: rgba(244, 63, 94, 0.6) !important;
+  box-shadow: 0 0 12px rgba(244, 63, 94, 0.25) !important;
+}
+
+.futuristic-settings-textarea {
+  width: 100% !important;
+  padding: 14px 16px !important;
+  border-radius: 12px !important;
+  background-color: rgba(30, 30, 38, 0.9) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  outline: none !important;
+  transition: all 0.2s ease-in-out;
+  min-height: 160px;
+  line-height: 1.5;
+}
+
+.futuristic-settings-textarea:focus {
+  border-color: rgba(244, 63, 94, 0.6) !important;
+  box-shadow: 0 0 12px rgba(244, 63, 94, 0.25) !important;
+}
+
+.futuristic-action-btn {
+  padding: 8px 20px !important;
+  border-radius: 9999px !important;
+  background: linear-gradient(135deg, #e11d48 0%, #be123c 100%) !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  font-size: 14px !important;
+  border: 1px solid rgba(251, 113, 133, 0.4) !important;
+  box-shadow: 0 4px 14px rgba(225, 29, 72, 0.3) !important;
+  transition: all 0.2s ease-in-out !important;
+  cursor: pointer !important;
+}
+
+.futuristic-action-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #f43f5e 0%, #e11d48 100%) !important;
+  box-shadow: 0 0 18px rgba(244, 63, 94, 0.5) !important;
+}
+
+.futuristic-action-btn:disabled {
+  opacity: 0.4 !important;
+  cursor: not-allowed !important;
+}
+
+/* Futuristic Live Mode Button (Right of Send Button) */
+.futuristic-btn-live {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: #a1a1aa !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 9999px !important;
+  width: 42px !important;
+  height: 42px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.3s ease !important;
+  cursor: pointer !important;
+  flex-shrink: 0 !important;
+  margin-left: 6px !important;
+}
+
+.futuristic-btn-live:hover {
+  background: rgba(255, 255, 255, 0.18) !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.35) !important;
+}
+
+.futuristic-btn-live.active {
+  background: linear-gradient(135deg, #e11d48, #9f1239) !important;
+  color: #ffffff !important;
+  border-color: #f43f5e !important;
+  box-shadow: 0 0 16px rgba(225, 29, 72, 0.6) !important;
+  animation: pulse-live 1.8s infinite ease-in-out !important;
+}
+
+@keyframes pulse-live {
+  0% {
+    box-shadow: 0 0 0 0 rgba(225, 29, 72, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(225, 29, 72, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(225, 29, 72, 0);
+  }
+}
+
+/* Futuristic Voice Status Notification Badge */
+.voice-status-badge-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 8px;
+  pointer-events: none;
+}
+
+.voice-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 18px;
+  border-radius: 9999px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.voice-status-badge.status-ai-speaking {
+  background: rgba(225, 29, 72, 0.22) !important;
+  border: 1px solid rgba(244, 63, 94, 0.5) !important;
+  color: #fecdd3 !important;
+}
+
+.voice-status-badge.status-user-turn {
+  background: rgba(16, 185, 129, 0.25) !important;
+  border: 1px solid rgba(52, 211, 153, 0.7) !important;
+  color: #a7f3d0 !important;
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.5) !important;
+  animation: pulse-emerald 1.5s infinite ease-in-out !important;
+}
+
+.voice-status-badge.status-listening {
+  background: rgba(59, 130, 246, 0.22) !important;
+  border: 1px solid rgba(96, 165, 250, 0.6) !important;
+  color: #bfdbfe !important;
+  animation: pulse-blue 1.5s infinite ease-in-out !important;
+}
+
+@keyframes pulse-emerald {
+  0% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 12px rgba(16, 185, 129, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}
+
+@keyframes pulse-blue {
+  0% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 12px rgba(59, 130, 246, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+  }
+}
+
+
+
+
+
+
