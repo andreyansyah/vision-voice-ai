@@ -1,67 +1,81 @@
-# ChatVRM
+# 🤖 Vision Voice AI (v1.0.0)
 
-ChatVRMは、技術共有およびデモンストレーションを主目的としたプロジェクトです。
+**Vision Voice AI** adalah aplikasi web interaktif 3D Avatar AI modern dengan kemampuan percakapan suara *real-time*, didukung oleh **KoboiLLM (Gemini 3 Flash & Gemini 2.5 TTS)** dan teknologi render **VRM 3D Avatar (Three.js)**.
 
-本レポジトリは、2024-07-18時点のコードを持ってアーカイブされました。
-今後、ChatVRMに対して変更を加えたい場合、フォークを行って開発いただけますと幸いです。
-
-また、関連プロジェクトとして [local-chat-vrm](https://github.com/pixiv/local-chat-vrm) も公開しています。
-local-chat-vrmは返答文の生成と読み上げ音声の生成をブラウザ上で実行できるアプリケーションです。ただし英語での応答のみに対応しており、日本語はご利用いただけません。
+Aplikasi ini dilengkapi dengan fitur unggulan **Auto Listener (Gemini Live Mode)** yang memungkinkan Anda berinteraksi dan ngobrol panjang secara *hands-free* tanpa perlu menekan tombol mic berulang kali.
 
 ---
 
-ChatVRMはブラウザで簡単に3Dキャラクターと会話ができるデモアプリケーションです。
+## ✨ Fitur Utama
 
-VRMファイルをインポートしてキャラクターに合わせた声の調整や、感情表現を含んだ返答文の生成などを行うことができます。
+- 🎙️ **Auto Listener (Gemini Live Voice Mode)**:
+  - Perekaman suara *hands-free* secara terus-menerus (*continuous speech recognition*).
+  - **Voice Activity Detection (VAD)**: Mengirimkan ucapan secara alami setelah 1.8 detik hening.
+  - **Auto Mute & Unmute**: Microphone otomatis mati saat karakter bersuara dan otomatis aktif kembali saat karakter hening.
+  - **Filter Gema Cerdas (*Strict Mid-Sentence Echo Stripping*)**: Membuang gema suara speaker karakter tanpa memotong balasan asli dari pengguna.
+  - **Notifikasi Turn Status**: Badge visual berpendar + **nada chime audio sci-fi** sebagai penanda giliran bicara.
+- 🧠 **AI Chat Model**: Diotaki oleh **Gemini 3 Flash Preview** (`gemini/gemini-3-flash-preview`) via KoboiLLM API.
+- 🗣️ **AI Text-to-Speech (TTS)**: Suara pria konsisten Gemini (`gemini-2.5-flash-tts` dengan voice `Puck`).
+- 🎭 **VRM 3D Avatar & Expression**: Render avatar 3D interaktif dengan ekspresi wajah & *lip-sync* otomatis berbasis Web Audio API.
+- 🎨 **Futuristic UI/UX Design**: Desain antarmuka stealth dark mode beraksen crimson, glassmorphism, dan responsif.
+- 🌐 **cPanel Deployment Ready**: Dilengkapi dengan file `server.js` untuk kemudahan *deployment* ke hosting cPanel Node.js.
 
-ChatVRMの各機能は主に以下の技術を使用しています。
+---
 
-- ユーザーの音声の認識
-    - [Web Speech API(SpeechRecognition)](https://developer.mozilla.org/ja/docs/Web/API/SpeechRecognition)
-- 返答文の生成
-    - [ChatGPT API](https://platform.openai.com/docs/api-reference/chat)
-- 読み上げ音声の生成
-    - [Koemotion/Koeiromap API](https://koemotion.rinna.co.jp/)
-- 3Dキャラクターの表示
-    - [@pixiv/three-vrm](https://github.com/pixiv/three-vrm)
+## 🛠️ Teknologi Yang Digunakan
 
-## 実行
-ローカル環境で実行する場合はこのリポジトリをクローンするか、ダウンロードしてください。
+- **Frontend & Framework**: [Next.js](https://nextjs.org/) (React, TypeScript, Tailwind CSS)
+- **3D Engine**: Three.js & [@pixiv/three-vrm](https://github.com/pixiv/three-vrm)
+- **Speech Recognition**: Web Speech API (`id-ID`)
+- **LLM Provider**: KoboiLLM Open-AI Compatible Endpoint (`/v1/chat/completions`)
+- **TTS Provider**: KoboiLLM Audio Speech Endpoint (`/v1/audio/speech`)
 
+---
+
+## 🚀 Cara Menjalankan di Lokal (Local Development)
+
+### 1. Clone Repository
 ```bash
-git clone git@github.com:pixiv/ChatVRM.git
+git clone https://github.com/andreyansyah/vision-voice-ai.git
+cd vision-voice-ai
 ```
 
-必要なパッケージをインストールしてください。
+### 2. Install Dependencies
 ```bash
 npm install
 ```
 
-パッケージのインストールが完了した後、以下のコマンドで開発用のWebサーバーを起動します。
+### 3. Konfigurasi Environment Variables (`.env.local`)
+Buat file `.env.local` di folder root project:
+```env
+KOBOI_API_KEY=sk-LIyUDxzxPYUgj61n07NAig
+```
+
+### 4. Jalankan Server Pengembang
 ```bash
 npm run dev
 ```
-
-実行後、以下のURLにアクセスして動作を確認して下さい。
-
-[http://localhost:3000](http://localhost:3000) 
-
+Buka [http://localhost:3000](http://localhost:3000) di browser Anda.
 
 ---
 
-## ChatGPT API
+## 📦 Deployment ke cPanel Hosting
 
-ChatVRMでは返答文の生成にChatGPT APIを使用しています。
+Project ini dilengkapi dengan **`server.js`** untuk kemudahan *deploy* ke hosting cPanel:
 
-ChatGPT APIの仕様や利用規約については以下のリンクや公式サイトをご確認ください。
+1. Build project:
+   ```bash
+   npm run build
+   ```
+2. Compress seluruh folder project menjadi `project.zip` (termasuk `node_modules`, `.next`, `server.js`, dan `public/`).
+3. Masuk ke cPanel ➔ **Setup Node.js App** ➔ Buat aplikasi dengan *Startup File*: `server.js`.
+4. Extract `project.zip` di cPanel, masukkan `KOBOI_API_KEY` pada *Environment Variables*, lalu klik **Restart Application**.
 
-- [https://platform.openai.com/docs/api-reference/chat](https://platform.openai.com/docs/api-reference/chat)
-- [https://openai.com/policies/api-data-usage-policies](https://openai.com/policies/api-data-usage-policies)
+---
 
+## 📄 Lisensi & Kredit
 
-## Koeiromap API
-ChatVRMでは返答文の音声読み上げにKoemotionのKoeiromap APIを使用しています。
+- Base 3D VRM Viewer berbasis [ChatVRM](https://github.com/pixiv/ChatVRM) oleh pixiv Inc.
+- AI Chat & TTS diproyeksikan menggunakan KoboiLLM Platform.
 
-Koeiromap APIの仕様や利用規約については以下のリンクや公式サイトをご確認ください。
-
-- [https://koemotion.rinna.co.jp/](https://koemotion.rinna.co.jp/)
+Developed with ❤️ by **Muhamad Andreyansyah**.
