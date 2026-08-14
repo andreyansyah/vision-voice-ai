@@ -1,6 +1,6 @@
 # 🤖 Vision Voice AI (v1.0.0)
 
-**Vision Voice AI** adalah aplikasi web interaktif 3D Avatar AI modern dengan kemampuan percakapan suara *real-time*, didukung oleh **KoboiLLM (Gemini 3 Flash & Gemini 2.5 TTS)** dan teknologi render **VRM 3D Avatar (Three.js)**.
+**Vision Voice AI** adalah aplikasi web interaktif 3D Avatar AI modern dengan kemampuan percakapan suara *real-time*, didukung oleh **Custom AI Provider (Gemini 3 Flash & Gemini 2.5 TTS)** dan teknologi render **VRM 3D Avatar (Three.js)**.
 
 Aplikasi ini dilengkapi dengan fitur unggulan **Auto Listener (Gemini Live Mode)** yang memungkinkan Anda berinteraksi dan ngobrol panjang secara *hands-free* tanpa perlu menekan tombol mic berulang kali.
 
@@ -14,7 +14,7 @@ Aplikasi ini dilengkapi dengan fitur unggulan **Auto Listener (Gemini Live Mode)
   - **Auto Mute & Unmute**: Microphone otomatis mati saat karakter bersuara dan otomatis aktif kembali saat karakter hening.
   - **Filter Gema Cerdas (*Strict Mid-Sentence Echo Stripping*)**: Membuang gema suara speaker karakter tanpa memotong balasan asli dari pengguna.
   - **Notifikasi Turn Status**: Badge visual berpendar + **nada chime audio sci-fi** sebagai penanda giliran bicara.
-- 🧠 **AI Chat Model**: Diotaki oleh **Gemini 3 Flash Preview** (`gemini/gemini-3-flash-preview`) via KoboiLLM API.
+- 🧠 **AI Chat Model**: Diotaki oleh **Gemini 3 Flash Preview** (`gemini/gemini-3-flash-preview`) via Custom Provider API.
 - 🗣️ **AI Text-to-Speech (TTS)**: Suara pria konsisten Gemini (`gemini-2.5-flash-tts` dengan voice `Puck`).
 - 🎭 **VRM 3D Avatar & Expression**: Render avatar 3D interaktif dengan ekspresi wajah & *lip-sync* otomatis berbasis Web Audio API.
 - 🎨 **Futuristic UI/UX Design**: Desain antarmuka stealth dark mode beraksen crimson, glassmorphism, dan responsif.
@@ -27,8 +27,8 @@ Aplikasi ini dilengkapi dengan fitur unggulan **Auto Listener (Gemini Live Mode)
 - **Frontend & Framework**: [Next.js](https://nextjs.org/) (React, TypeScript, Tailwind CSS)
 - **3D Engine**: Three.js & [@pixiv/three-vrm](https://github.com/pixiv/three-vrm)
 - **Speech Recognition**: Web Speech API (`id-ID`)
-- **LLM Provider**: KoboiLLM Open-AI Compatible Endpoint (`/v1/chat/completions`)
-- **TTS Provider**: KoboiLLM Audio Speech Endpoint (`/v1/audio/speech`)
+- **LLM Provider**: Custom Provider Open-AI Compatible Endpoint (`/v1/chat/completions`)
+- **TTS Provider**: Custom Provider Audio Speech Endpoint (`/v1/audio/speech`)
 
 ---
 
@@ -48,7 +48,7 @@ npm install
 ### 3. Konfigurasi Environment Variables (`.env.local`)
 Buat file `.env.local` di folder root project:
 ```env
-KOBOI_API_KEY=sk-LIyUDxzxPYUgj61n07NAig
+CUSTOM_API_KEY=sk-LIyUDxzxPYUgj61n07NAig
 ```
 
 ### 4. Jalankan Server Pengembang
@@ -69,13 +69,13 @@ Project ini dilengkapi dengan **`server.js`** untuk kemudahan *deploy* ke hostin
    ```
 2. Compress seluruh folder project menjadi `project.zip` (termasuk `node_modules`, `.next`, `server.js`, dan `public/`).
 3. Masuk ke cPanel ➔ **Setup Node.js App** ➔ Buat aplikasi dengan *Startup File*: `server.js`.
-4. Extract `project.zip` di cPanel, masukkan `KOBOI_API_KEY` pada *Environment Variables*, lalu klik **Restart Application**.
+4. Extract `project.zip` di cPanel, masukkan `CUSTOM_API_KEY` pada *Environment Variables*, lalu klik **Restart Application**.
 
 ---
 
 ## 📄 Lisensi & Kredit
 
 - Base 3D VRM Viewer berbasis [ChatVRM](https://github.com/pixiv/ChatVRM) oleh pixiv Inc.
-- AI Chat & TTS diproyeksikan menggunakan KoboiLLM Platform.
+- AI Chat & TTS diproyeksikan menggunakan Custom AI Provider Platform.
 
 Developed with ❤️ by **Muhamad Andreyansyah**.

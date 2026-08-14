@@ -6,6 +6,7 @@ export default async function handler(
 ) {
   const apiKey =
     req.body.apiKey ||
+    process.env.CUSTOM_API_KEY ||
     process.env.KOBOI_API_KEY ||
     process.env.GEMINI_API_KEY ||
     process.env.OPEN_AI_KEY ||
@@ -14,7 +15,7 @@ export default async function handler(
   if (!apiKey) {
     res.status(400).json({
       message:
-        "Kunci API KoboiLLM belum dimasukkan. Silakan masukkan Kunci API Anda di menu Pengaturan.",
+        "Kunci API Custom Provider belum dimasukkan. Silakan masukkan Kunci API Anda di menu Pengaturan.",
     });
     return;
   }
@@ -30,7 +31,7 @@ export default async function handler(
 
   for (const model of chatModels) {
     try {
-      console.log(`⚡ Memproses Chat AI via KoboiLLM (${model})...`);
+      console.log(`⚡ Memproses Chat AI via Custom Provider (${model})...`);
       const response = await fetch("https://lite.koboillm.com/v1/chat/completions", {
         method: "POST",
         headers: {
@@ -50,7 +51,7 @@ export default async function handler(
           if (!reader) {
             res
               .status(500)
-              .json({ message: "Gagal membaca data stream dari KoboiLLM API." });
+              .json({ message: "Gagal membaca data stream dari Custom Provider API." });
             return;
           }
 
@@ -77,7 +78,7 @@ export default async function handler(
           const data = await response.json();
           const messageContent =
             data.choices?.[0]?.message?.content ||
-            "Terjadi kesalahan pada respon KoboiLLM";
+            "Terjadi kesalahan pada respon Custom Provider";
           res.status(200).json({ message: messageContent });
           return;
         }
@@ -91,6 +92,6 @@ export default async function handler(
   }
 
   res.status(500).json({
-    message: "Gagal menghubungkan ke KoboiLLM Chat API. Pastikan Kunci API valid.",
+    message: "Gagal menghubungkan ke Custom Provider Chat API. Pastikan Kunci API valid.",
   });
 }

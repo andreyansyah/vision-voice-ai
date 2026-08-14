@@ -12,6 +12,7 @@ export default async function handler(
   let message = req.body.message || "";
   let apiKey =
     req.body.apiKey ||
+    process.env.CUSTOM_API_KEY ||
     process.env.KOBOI_API_KEY ||
     process.env.GEMINI_API_KEY ||
     process.env.OPEN_AI_KEY ||
@@ -30,7 +31,7 @@ export default async function handler(
   const targetVoice = "Puck";
 
   try {
-    console.log(`⚡ Memproses KoboiLLM TTS (model: ${targetModel}, voice: ${targetVoice})...`);
+    console.log(`⚡ Memproses Custom Provider TTS (model: ${targetModel}, voice: ${targetVoice})...`);
     const response = await fetch("https://lite.koboillm.com/v1/audio/speech", {
       method: "POST",
       headers: {
@@ -50,19 +51,19 @@ export default async function handler(
       const contentType = response.headers.get("content-type") || "audio/wav";
       const audioDataUrl = `data:${contentType};base64,${base64Audio}`;
 
-      console.log(`✅ Berhasil generate suara konsisten KoboiLLM Gemini TTS (${targetVoice})!`);
+      console.log(`✅ Berhasil generate suara konsisten Custom Provider Gemini TTS (${targetVoice})!`);
       res.status(200).json({ audio: audioDataUrl });
       return;
     } else {
       const errText = await response.text().catch(() => "");
-      console.error(`⚠️ KoboiLLM TTS ${targetModel} Error (${response.status}):`, errText);
+      console.error(`⚠️ Custom Provider TTS ${targetModel} Error (${response.status}):`, errText);
     }
   } catch (err: any) {
-    console.error(`⚠️ KoboiLLM TTS Exception:`, err?.message || err);
+    console.error(`⚠️ Custom Provider TTS Exception:`, err?.message || err);
   }
 
   res.status(500).json({
     audio: "",
-    error: "Gagal memproses KoboiLLM TTS. Pastikan Kunci API valid.",
+    error: "Gagal memproses Custom Provider TTS. Pastikan Kunci API valid.",
   });
 }

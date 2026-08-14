@@ -60,26 +60,18 @@ export const Settings = ({
             Pengaturan Aplikasi
           </div>
 
-          {/* KoboiLLM API Key Card */}
+          {/* Custom Provider API Key Card */}
           <div className="futuristic-settings-card">
-            <div className="futuristic-settings-title">🔑 Kunci API KoboiLLM</div>
+            <div className="futuristic-settings-title">🔑 Kunci API Custom Provider</div>
             <input
               className="futuristic-settings-input mb-12"
               type="text"
-              placeholder="sk-LIyUDxzxPYUgj61n07NAig"
+              placeholder="Masukkan Kunci API Custom Provider Anda..."
               value={openAiKey}
               onChange={onChangeAiKey}
             />
-            <div className="text-xs text-neutral-300 leading-relaxed mb-8">
-              Kunci API diakses melalui layanan{" "}
-              <Link
-                url="https://lite.koboillm.com"
-                label="KoboiLLM Lite API"
-              />
-              .
-            </div>
             <div className="text-xs text-neutral-400 leading-relaxed">
-              KoboiLLM API diakses secara aman. Kunci API tidak disimpan di server luar.
+              Custom Provider API diakses secara aman. Kunci API tidak disimpan di server luar.
               <br />
               ※ Model AI yang digunakan adalah <strong>gemini/gemini-3-flash-preview</strong>.
             </div>
@@ -115,7 +107,7 @@ export const Settings = ({
           <div className="futuristic-settings-card">
             <div className="futuristic-settings-title">🔊 Penyesuaian Suara (TTS)</div>
             <div className="text-sm text-neutral-200">
-              Sintesis suara diproses secara real-time menggunakan KoboiLLM <strong>gemini/gemini-3.1-flash-tts-preview</strong> (Suara Laki-Laki: <em>Puck / echo</em>).
+              Sintesis suara diproses secara real-time menggunakan Custom Provider <strong>gemini/gemini-3.1-flash-tts-preview</strong> (Suara Laki-Laki: <em>Puck / echo</em>).
             </div>
           </div>
 
