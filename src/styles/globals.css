@@ -523,6 +523,103 @@ body {
   }
 }
 
+/* CMD Terminal Card (Top Right) */
+.cmd-terminal-card {
+  background: rgba(15, 15, 22, 0.88) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6), 0 0 15px rgba(225, 29, 72, 0.15) !important;
+  font-family: "Consolas", "Courier New", ui-monospace, SFMono-Regular, monospace !important;
+  overflow: hidden !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  width: 250px;
+  cursor: pointer !important;
+  text-decoration: none !important;
+}
+
+.cmd-terminal-card:hover {
+  border-color: rgba(244, 63, 94, 0.6) !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8), 0 0 22px rgba(244, 63, 94, 0.4) !important;
+  transform: translateY(-2px);
+}
+
+.cmd-terminal-header {
+  background: rgba(30, 30, 42, 0.95) !important;
+  padding: 6px 12px !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+.cmd-terminal-title {
+  color: #a1a1aa !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+
+.cmd-terminal-dots {
+  display: flex !important;
+  gap: 5px !important;
+}
+
+.cmd-dot {
+  width: 8px !important;
+  height: 8px !important;
+  border-radius: 50% !important;
+}
+
+.cmd-dot-red { background-color: #ff5f56 !important; }
+.cmd-dot-yellow { background-color: #ffbd2e !important; }
+.cmd-dot-green { background-color: #27c93f !important; }
+
+.cmd-terminal-body {
+  padding: 10px 12px !important;
+  font-size: 11px !important;
+  line-height: 1.5 !important;
+}
+
+.cmd-line {
+  display: flex !items-center !important;
+  gap: 5px !important;
+  margin-bottom: 2px !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.cmd-path {
+  color: #f43f5e !important; /* Crimson path */
+  font-weight: 700 !important;
+}
+
+.cmd-output {
+  color: #e4e4e7 !important;
+}
+
+.cmd-cursor {
+  display: inline-block !important;
+  width: 7px !important;
+  height: 13px !important;
+  background-color: #34d399 !important;
+  vertical-align: middle !important;
+  animation: cmd-blink 1s infinite !important;
+  margin-left: 2px !important;
+}
+
+@keyframes cmd-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+
 
 
 
