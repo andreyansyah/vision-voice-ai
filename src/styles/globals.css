@@ -550,7 +550,7 @@ body {
   font-family:
     "Consolas", "Courier New", ui-monospace, SFMono-Regular, monospace !important;
   overflow: hidden !important;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
   width: 380px !important;
   cursor: pointer !important;
   text-decoration: none !important;
@@ -562,6 +562,54 @@ body {
     0 14px 40px rgba(0, 0, 0, 0.85),
     0 0 24px rgba(244, 63, 94, 0.4) !important;
   transform: translateY(-3px);
+}
+
+/* CMD Terminal Maximized Modal Overlay */
+.cmd-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background-color: rgba(5, 5, 8, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  animation: cmd-fade-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.cmd-terminal-card-maximized {
+  background: rgba(10, 10, 16, 0.98) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  border: 1.5px solid rgba(244, 63, 94, 0.6) !important;
+  border-radius: 16px !important;
+  box-shadow:
+    0 24px 64px rgba(0, 0, 0, 0.9),
+    0 0 40px rgba(244, 63, 94, 0.35) !important;
+  font-family:
+    "Consolas", "Courier New", ui-monospace, SFMono-Regular, monospace !important;
+  overflow: hidden !important;
+  width: 100%;
+  max-width: 740px;
+  animation: cmd-zoom-in 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes cmd-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes cmd-zoom-in {
+  from {
+    opacity: 0;
+    transform: scale(0.75) translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 
 .cmd-terminal-header {
