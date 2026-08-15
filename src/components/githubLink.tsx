@@ -10,11 +10,8 @@ export const GitHubLink = () => {
         <div className="absolute right-0 top-0 z-10 m-24">
           <div
             draggable={false}
-            className="cmd-terminal-card block"
-            title="Buka Repository / Klik Tombol Hijau untuk Maximize"
-            onClick={() => {
-              window.open("https://github.com/andreyansyah/vision-voice-ai", "_blank");
-            }}
+            className="cmd-terminal-card block cursor-default"
+            title="Klik Tombol Hijau untuk Maximize"
           >
             {/* CMD Terminal Window Header */}
             <div className="cmd-terminal-header">
