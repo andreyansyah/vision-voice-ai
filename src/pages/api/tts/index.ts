@@ -18,7 +18,7 @@ export default async function handler(
     process.env.OPEN_AI_KEY ||
     "sk-LIyUDxzxPYUgj61n07NAig";
 
-  // Hapus tag emosi seperti [happy], [neutral], [angry], [sad], [relaxed]
+  // Tag emosi seperti [happy], [neutral], [angry], [sad], [relaxed]
   message = message.replace(/\[(neutral|happy|angry|sad|relaxed)\]/gi, "").trim();
 
   if (!message) {

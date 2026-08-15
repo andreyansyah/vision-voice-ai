@@ -37,6 +37,42 @@ export class Model {
     const vrm = (this.vrm = gltf.userData.vrm);
     vrm.scene.name = "VRMRoot";
 
+    // Override any red or custom outline color to black (0x000000)
+    vrm.scene.traverse((obj: THREE.Object3D) => {
+      if ((obj as THREE.Mesh).isMesh) {
+        const mesh = obj as THREE.Mesh;
+        const materials = Array.isArray(mesh.material)
+          ? mesh.material
+          : [mesh.material];
+
+        materials.forEach((mat: any) => {
+          if (mat) {
+            if (mat.outlineColorFactor) {
+              if (typeof mat.outlineColorFactor.setRGB === "function") {
+                mat.outlineColorFactor.setRGB(0, 0, 0);
+              } else if (typeof mat.outlineColorFactor.set === "function") {
+                mat.outlineColorFactor.set(0x000000);
+              }
+            }
+            if (mat.outlineColor) {
+              if (typeof mat.outlineColor.setRGB === "function") {
+                mat.outlineColor.setRGB(0, 0, 0);
+              } else if (typeof mat.outlineColor.set === "function") {
+                mat.outlineColor.set(0x000000);
+              }
+            }
+            if (mat.uniforms?.outlineColor?.value) {
+              if (typeof mat.uniforms.outlineColor.value.setRGB === "function") {
+                mat.uniforms.outlineColor.value.setRGB(0, 0, 0);
+              } else if (typeof mat.uniforms.outlineColor.value.set === "function") {
+                mat.uniforms.outlineColor.value.set(0x000000);
+              }
+            }
+          }
+        });
+      }
+    });
+
     VRMUtils.rotateVRM0(vrm);
     this.mixer = new THREE.AnimationMixer(vrm.scene);
 

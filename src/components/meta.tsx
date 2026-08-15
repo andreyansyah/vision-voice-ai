@@ -1,7 +1,7 @@
 import { buildUrl } from "@/utils/buildUrl";
 import Head from "next/head";
 export const Meta = () => {
-  const title = "ChatVRM";
+  const title = "Vision AI";
   const description =
     "Nikmati percakapan dengan karakter 3D langsung di web browser Anda menggunakan mikrofon, input teks, dan sintesis suara. Anda juga dapat mengubah karakter (VRM), mengatur kepribadian, serta menyesuaikan suara.";
   const imageUrl = "https://pixiv.github.io/ChatVRM/ogp.png";
