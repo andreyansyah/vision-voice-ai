@@ -13,12 +13,12 @@ export const GitHubLink = () => {
         <div className="cmd-terminal-header">
           <div className="cmd-terminal-title">
             <svg
-              width="12"
-              height="12"
+              width="14"
+              height="14"
               viewBox="0 0 24 24"
               fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
+              stroke="#ffffff"
+              strokeWidth="2.5"
               strokeLinecap="round"
               strokeLinejoin="round"
             >
@@ -38,15 +38,15 @@ export const GitHubLink = () => {
         <div className="cmd-terminal-body">
           <div className="cmd-line">
             <span className="cmd-path">C:\VISION_AI&gt;</span>
-            <span className="cmd-output">sys --status</span>
+            <span className="cmd-output font-semibold text-white">sys --status</span>
           </div>
-          <div className="cmd-line text-emerald-400">
+          <div className="cmd-line text-emerald-400 font-bold">
             [SYS] STATUS : ONLINE (READY)
           </div>
-          <div className="cmd-line text-neutral-300">
+          <div className="cmd-line text-white font-semibold">
             [AI]  MODEL  : GEMINI-3-FLASH
           </div>
-          <div className="cmd-line text-neutral-300">
+          <div className="cmd-line text-white font-semibold">
             [TTS] VOICE  : PUCK (MALE)
           </div>
           <div className="cmd-line mt-1">
