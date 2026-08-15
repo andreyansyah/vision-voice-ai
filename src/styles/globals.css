@@ -542,7 +542,7 @@ body {
   background: rgba(12, 11, 18, 0.94) !important;
   backdrop-filter: blur(18px) !important;
   -webkit-backdrop-filter: blur(18px) !important;
-  border: 1px solid rgba(244, 63, 94, 0.4) !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
   border-radius: 14px !important;
   box-shadow:
     0 10px 30px rgba(0, 0, 0, 0.7),
@@ -569,9 +569,9 @@ body {
   position: fixed;
   inset: 0;
   z-index: 9999;
-  background-color: rgba(5, 5, 8, 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -597,8 +597,12 @@ body {
 }
 
 @keyframes cmd-fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes cmd-zoom-in {
