@@ -539,14 +539,14 @@ body {
 
 /* CMD Terminal Card (Top Right) */
 .cmd-terminal-card {
-  background: rgba(10, 10, 16, 0.94) !important;
+  background: rgba(12, 11, 18, 0.94) !important;
   backdrop-filter: blur(18px) !important;
   -webkit-backdrop-filter: blur(18px) !important;
-  border: 1px.5px solid rgba(255, 255, 255, 0.25) !important;
+  border: 1px solid rgba(244, 63, 94, 0.4) !important;
   border-radius: 14px !important;
   box-shadow:
-    0 16px 40px rgba(0, 0, 0, 0.75),
-    0 0 24px rgba(225, 29, 72, 0.22) !important;
+    0 10px 30px rgba(0, 0, 0, 0.7),
+    0 0 15px rgba(244, 63, 94, 0.15) !important;
   font-family:
     "Consolas", "Courier New", ui-monospace, SFMono-Regular, monospace !important;
   overflow: hidden !important;
@@ -557,10 +557,10 @@ body {
 }
 
 .cmd-terminal-card:hover {
-  border-color: rgba(244, 63, 94, 0.85) !important;
+  border-color: rgba(244, 63, 94, 0.75) !important;
   box-shadow:
-    0 20px 52px rgba(0, 0, 0, 0.9),
-    0 0 32px rgba(244, 63, 94, 0.55) !important;
+    0 14px 40px rgba(0, 0, 0, 0.85),
+    0 0 24px rgba(244, 63, 94, 0.4) !important;
   transform: translateY(-3px);
 }
 
@@ -634,12 +634,12 @@ body {
 
 .cmd-cursor {
   display: inline-block !important;
-  width: 9px !important;
-  height: 18px !important;
+  width: 2px !important;
+  height: 10px !important;
   background-color: #ffffff !important;
   vertical-align: middle !important;
   animation: cmd-blink 1s infinite !important;
-  margin-left: 3px !important;
+  margin-left: 0px !important;
 }
 
 @keyframes cmd-blink {
