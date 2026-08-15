@@ -656,6 +656,9 @@ body {
 .cmd-dot-green {
   background-color: #27c93f !important;
 }
+.cmd-dot-grey {
+  background-color: #4b5563 !important;
+}
 
 .cmd-terminal-body {
   padding: 16px 20px !important;

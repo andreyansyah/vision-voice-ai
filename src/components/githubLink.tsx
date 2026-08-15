@@ -35,20 +35,19 @@ export const GitHubLink = () => {
                 cmd.exe - Vision AI
               </div>
               <div className="cmd-terminal-dots">
+                {/* Red dot: Grey when minimized */}
                 <span
-                  className="cmd-dot cmd-dot-red hover:scale-125 transition-transform"
-                  title="Tutup"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                  }}
+                  className="cmd-dot cmd-dot-grey opacity-60"
+                  title="Tutup (Nonaktif)"
+                  onClick={(e) => e.stopPropagation()}
                 />
+                {/* Yellow dot: Grey when minimized */}
                 <span
-                  className="cmd-dot cmd-dot-yellow hover:scale-125 transition-transform"
-                  title="Minimize"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                  }}
+                  className="cmd-dot cmd-dot-grey opacity-60"
+                  title="Minimize (Nonaktif)"
+                  onClick={(e) => e.stopPropagation()}
                 />
+                {/* Green dot: Active Green when minimized */}
                 <span
                   className="cmd-dot cmd-dot-green hover:scale-125 transition-transform cursor-pointer"
                   title="Maksimalkan / Perbesar Jendela CMD ke Tengah"
@@ -113,25 +112,28 @@ export const GitHubLink = () => {
                 cmd.exe - Vision AI
               </div>
               <div className="cmd-terminal-dots !gap-8">
+                {/* Red dot: Active Red when maximized to restore/close */}
                 <span
                   className="cmd-dot cmd-dot-red !w-3.5 !h-3.5 cursor-pointer hover:scale-125 transition-transform"
-                  title="Tutup / Restore"
+                  title="Kembalikan / Restore Jendela"
                   onClick={() => setIsMaximized(false)}
                 />
+                {/* Yellow dot: Grey when maximized */}
                 <span
-                  className="cmd-dot cmd-dot-yellow !w-3.5 !h-3.5 cursor-pointer hover:scale-125 transition-transform"
-                  title="Minimize"
-                  onClick={() => setIsMaximized(false)}
+                  className="cmd-dot cmd-dot-grey !w-3.5 !h-3.5 opacity-60"
+                  title="Minimize (Nonaktif)"
+                  onClick={(e) => e.stopPropagation()}
                 />
+                {/* Green dot: Grey when maximized */}
                 <span
-                  className="cmd-dot cmd-dot-green !w-3.5 !h-3.5 cursor-pointer hover:scale-125 transition-transform"
-                  title="Restore Jendela"
-                  onClick={() => setIsMaximized(false)}
+                  className="cmd-dot cmd-dot-grey !w-3.5 !h-3.5 opacity-60"
+                  title="Maximize (Nonaktif)"
+                  onClick={(e) => e.stopPropagation()}
                 />
               </div>
             </div>
 
-            {/* CMD Terminal Body (EXACT SAME TEXT AS MINIMIZED CARD) */}
+            {/* CMD Terminal Body */}
             <div className="cmd-terminal-body !p-24 !text-base !leading-relaxed">
               <div className="cmd-line mb-3">
                 <span className="cmd-path">C:\VISION_AI&gt;</span>
