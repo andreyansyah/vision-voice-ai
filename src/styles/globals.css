@@ -55,7 +55,12 @@ body {
   left: 0;
   width: 100vw;
   padding: 16px 24px;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.15), transparent);
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.75),
+    rgba(0, 0, 0, 0.15),
+    transparent
+  );
   pointer-events: none;
   z-index: 20;
 }
@@ -70,7 +75,9 @@ body {
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 12px rgba(255, 255, 255, 0.05);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    0 0 12px rgba(255, 255, 255, 0.05);
   pointer-events: auto;
 }
 
@@ -164,14 +171,17 @@ body {
   -webkit-backdrop-filter: blur(20px) !important;
   border-radius: 16px !important;
   border: 1px solid rgba(244, 63, 94, 0.4) !important;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 15px rgba(244, 63, 94, 0.15) !important;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.7),
+    0 0 15px rgba(244, 63, 94, 0.15) !important;
   overflow: hidden;
 }
 
 .futuristic-subtitle-header {
   background: linear-gradient(90deg, #e11d48 0%, #be123c 100%) !important;
   color: #ffffff !important;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+  font-family:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
   font-size: 12px !important;
   font-weight: 700 !important;
   letter-spacing: 0.12em !important;
@@ -269,7 +279,8 @@ body {
 .futuristic-chat-user-header {
   background: rgba(45, 45, 55, 0.9) !important;
   color: #ffffff !important;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+  font-family:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
   font-size: 11px !important;
   font-weight: 700 !important;
   letter-spacing: 0.1em !important;
@@ -295,14 +306,17 @@ body {
   -webkit-backdrop-filter: blur(16px) !important;
   border-radius: 16px !important;
   border: 1px solid rgba(244, 63, 94, 0.4) !important;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), 0 0 14px rgba(244, 63, 94, 0.15) !important;
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.6),
+    0 0 14px rgba(244, 63, 94, 0.15) !important;
   overflow: hidden;
 }
 
 .futuristic-chat-assistant-header {
   background: linear-gradient(90deg, #e11d48 0%, #be123c 100%) !important;
   color: #ffffff !important;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+  font-family:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
   font-size: 11px !important;
   font-weight: 700 !important;
   letter-spacing: 0.1em !important;
@@ -525,30 +539,35 @@ body {
 
 /* CMD Terminal Card (Top Right) */
 .cmd-terminal-card {
-  background: rgba(12, 12, 18, 0.94) !important;
-  backdrop-filter: blur(16px) !important;
-  -webkit-backdrop-filter: blur(16px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.22) !important;
-  border-radius: 12px !important;
-  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.7), 0 0 20px rgba(225, 29, 72, 0.2) !important;
-  font-family: "Consolas", "Courier New", ui-monospace, SFMono-Regular, monospace !important;
+  background: rgba(10, 10, 16, 0.94) !important;
+  backdrop-filter: blur(18px) !important;
+  -webkit-backdrop-filter: blur(18px) !important;
+  border: 1px.5px solid rgba(255, 255, 255, 0.25) !important;
+  border-radius: 14px !important;
+  box-shadow:
+    0 16px 40px rgba(0, 0, 0, 0.75),
+    0 0 24px rgba(225, 29, 72, 0.22) !important;
+  font-family:
+    "Consolas", "Courier New", ui-monospace, SFMono-Regular, monospace !important;
   overflow: hidden !important;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-  width: 310px !important;
+  width: 380px !important;
   cursor: pointer !important;
   text-decoration: none !important;
 }
 
 .cmd-terminal-card:hover {
-  border-color: rgba(244, 63, 94, 0.75) !important;
-  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.85), 0 0 28px rgba(244, 63, 94, 0.5) !important;
-  transform: translateY(-2px);
+  border-color: rgba(244, 63, 94, 0.85) !important;
+  box-shadow:
+    0 20px 52px rgba(0, 0, 0, 0.9),
+    0 0 32px rgba(244, 63, 94, 0.55) !important;
+  transform: translateY(-3px);
 }
 
 .cmd-terminal-header {
-  background: rgba(26, 26, 36, 0.98) !important;
-  padding: 8px 14px !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
+  background: rgba(24, 24, 34, 0.98) !important;
+  padding: 10px 16px !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18) !important;
   display: flex !important;
   align-items: center !important;
   justify-content: space-between !important;
@@ -556,76 +575,79 @@ body {
 
 .cmd-terminal-title {
   color: #ffffff !important;
-  font-size: 11px !important;
+  font-size: 13px !important;
   font-weight: 700 !important;
   letter-spacing: 0.06em !important;
   text-transform: uppercase !important;
   display: flex !important;
   align-items: center !important;
-  gap: 7px !important;
+  gap: 8px !important;
 }
 
 .cmd-terminal-dots {
   display: flex !important;
-  gap: 6px !important;
+  gap: 7px !important;
 }
 
 .cmd-dot {
-  width: 9px !important;
-  height: 9px !important;
+  width: 11px !important;
+  height: 11px !important;
   border-radius: 50% !important;
 }
 
-.cmd-dot-red { background-color: #ff5f56 !important; }
-.cmd-dot-yellow { background-color: #ffbd2e !important; }
-.cmd-dot-green { background-color: #27c93f !important; }
+.cmd-dot-red {
+  background-color: #ff5f56 !important;
+}
+.cmd-dot-yellow {
+  background-color: #ffbd2e !important;
+}
+.cmd-dot-green {
+  background-color: #27c93f !important;
+}
 
 .cmd-terminal-body {
-  padding: 12px 16px !important;
-  font-size: 12.5px !important;
-  line-height: 1.6 !important;
+  padding: 16px 20px !important;
+  font-size: 10px !important;
+  line-height: 1.1 !important;
   color: #ffffff !important;
 }
 
 .cmd-line {
   display: flex !important;
   align-items: center !important;
-  gap: 6px !important;
-  margin-bottom: 3px !important;
+  gap: 8px !important;
+  margin-bottom: 5px !important;
   white-space: nowrap !important;
   overflow: hidden !important;
   text-overflow: ellipsis !important;
 }
 
 .cmd-path {
-  color: #ff3355 !important; /* Electric Crimson path */
+  color: #ff2e55 !important; /* Electric Crimson path */
   font-weight: 800 !important;
 }
 
 .cmd-output {
   color: #ffffff !important;
-  font-weight: 600 !important;
+  font-weight: 700 !important;
 }
 
 .cmd-cursor {
   display: inline-block !important;
-  width: 8px !important;
-  height: 15px !important;
+  width: 9px !important;
+  height: 18px !important;
   background-color: #ffffff !important;
   vertical-align: middle !important;
   animation: cmd-blink 1s infinite !important;
-  margin-left: 2px !important;
+  margin-left: 3px !important;
 }
 
 @keyframes cmd-blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
 }
-
-
-
-
-
-
-
-
