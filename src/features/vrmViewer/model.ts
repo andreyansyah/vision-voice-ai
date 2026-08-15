@@ -5,6 +5,7 @@ import { VRMAnimation } from "../../lib/VRMAnimation/VRMAnimation";
 import { VRMLookAtSmootherLoaderPlugin } from "@/lib/VRMLookAtSmootherLoaderPlugin/VRMLookAtSmootherLoaderPlugin";
 import { LipSync } from "../lipSync/lipSync";
 import { EmoteController } from "../emoteController/emoteController";
+import { SpeakingGestureController } from "../emoteController/speakingGestureController";
 import { Screenplay } from "../messages/messages";
 
 /**
@@ -17,6 +18,7 @@ export class Model {
 
   private _lookAtTargetParent: THREE.Object3D;
   private _lipSync?: LipSync;
+  private _speakingGestureController?: SpeakingGestureController;
 
   constructor(lookAtTargetParent: THREE.Object3D) {
     this._lookAtTargetParent = lookAtTargetParent;
@@ -77,12 +79,14 @@ export class Model {
     this.mixer = new THREE.AnimationMixer(vrm.scene);
 
     this.emoteController = new EmoteController(vrm, this._lookAtTargetParent);
+    this._speakingGestureController = new SpeakingGestureController(vrm);
   }
 
   public unLoadVrm() {
     if (this.vrm) {
       VRMUtils.deepDispose(this.vrm.scene);
       this.vrm = null;
+      this._speakingGestureController = undefined;
     }
   }
 
@@ -115,13 +119,15 @@ export class Model {
   }
 
   public update(delta: number): void {
+    this.emoteController?.update(delta);
+    this.mixer?.update(delta);
+
     if (this._lipSync) {
       const { volume } = this._lipSync.update();
       this.emoteController?.lipSync("aa", volume);
+      this._speakingGestureController?.update(delta, volume);
     }
 
-    this.emoteController?.update(delta);
-    this.mixer?.update(delta);
     this.vrm?.update(delta);
   }
 }
